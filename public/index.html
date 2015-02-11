@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<title>Browser-based linux terminal</title>
+
+		<link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/themes/cupertino/jquery-ui.min.css" />
+		<link rel="stylesheet" type="text/css" href="//cdn.datatables.net/plug-ins/3cfcc339e89/integration/jqueryui/dataTables.jqueryui.css">
+
+		<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+		<script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"></script>
+		<script type="text/javascript" language="javascript" src="//cdn.datatables.net/1.10.4/js/jquery.dataTables.min.js"></script>
+		<script type="text/javascript" language="javascript" src="//cdn.datatables.net/plug-ins/3cfcc339e89/integration/jqueryui/dataTables.jqueryui.js"></script>
+		<script type="text/javascript" src="/assets/jquery.ui-contextmenu.min.js"></script>
+		<script type="text/javascript" src="/assets/json2.js"></script>
+		<script type="text/javascript" charset="utf-8" src="/js/client.js"></script>
+
+		<style>
+			td.highlight {
+    			background-color: whitesmoke !important;
+			} 
+			/*little fragment of css, 
+			not included in the one downloaded from datatables.net, 
+			needed for rows highlight in the table*/
+		</style> 
+	</head>
+	<body>
+		<div id="tabs">
+			<ul>
+				<li><a href="#tabs-1">Processes table</a></li>
+				<li><a href="#tabs-2">Processes tree [N/A]</a></li>
+			</ul>
+			<div id="tabs-1">
+				<form>
+					Refresh rate [in seconds]:
+					<input id="refreshrate" value="1" min="1" autocomplete="off"></form>
+				</form>
+				<button id="psbutton">Get processes</button>
+				<button id="refreshondemand">Refresh</button>
+				<button id="refreshbutton">Start refreshing</button>
+				<button id="stoprefreshingbutton">Stop refreshing</button>
+				<div id="tablecontainer" class="tablecointainerclass">
+					<table id="processestable" class="row-border hover order-column"></table>
+				</div>
+			</div>
+			<div id="tabs-2">
+				
+			</div>
+		</div>
+		
+	</body>
+</html>
