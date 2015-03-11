@@ -150,7 +150,7 @@ $(document).ready(function(){
 			$("#processestable").dataTable().fnDestroy();
 		}
 
-		$.getJSON('tmp/ps.json', function(data, status){
+		$.getJSON('/data', function(data, status){
 			var txt, xx, x;
 
 			txt = 	"<table border='1'> \

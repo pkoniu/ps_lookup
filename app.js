@@ -12,11 +12,13 @@ setInterval(function() {
 		if(err) {
 			return console.error(err);
 		}
-		var tmp = JSON.stringify(res);
 
-		tmp = replaceAll('%', '', tmp);
+		res = JSON.stringify(res);
+		res = replaceAll('%', '', res);
 
-		fs.writeFile(__dirname + '/public/tmp/ps.json', tmp);
+		fs.writeFile(__dirname + '/public/tmp/psaux.json', res, function(err) {
+			if(err) console.log(err);
+		});
 	});
 }, 2000);
 
@@ -27,6 +29,14 @@ function replaceAll(find, replace, str) {
 
 app.use(express.static(__dirname + '/public'));
 app.use(bodyParser.json());
+
+app.get("/data", function(req, res) {
+	fs.readFile('./public/tmp/psaux.json', function(err, data){
+		if(err) console.log(err);
+
+		res.json(JSON.parse(data));
+	});
+});
 
 app.post("/", function(req, res) {
 	addon.sendSignal(parseInt(req.body.pid), parseInt(req.body.signal));
